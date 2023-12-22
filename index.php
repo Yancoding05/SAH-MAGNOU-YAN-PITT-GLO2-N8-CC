@@ -35,10 +35,10 @@
     $domaine=$_POST['domaine'] ;
     $Origine=$_POST['Origine'] ;
     $new_entry = array($name, $immatriculation,  $type, $couleur, $domaine, $Origine) ;
-    If(isset($_SESSION['entries'])){
-        Array_push($_SESSION['entries'], $new_entry) ;
+    If(isset($_form['entries'])){
+        Array_push($_form['entries'], $new_entry) ;
     }else{
-        $_SESSION['entries'] = array($new_entry) ;
+        $_form['entries'] = array($new_entry) ;
     }
     ?>
  
@@ -53,7 +53,7 @@
             <th>domaine</th>
             <th>Origine</th>
         </tr>
-        <?php foreach($_SESSION['entries'] as $entry) : ?>
+        <?php foreach($_form['entries'] as $entry) : ?>
         <tr>
             
             <td><?php echo $entry[0] ; ?></td>
@@ -80,15 +80,16 @@
         
         
             
-            <td><?php echo $entry[6] ; ?></td>
+    
         </tr>
         <?php endforeach ; ?>
     </table>
-    <form action= "programmation event 2.php" method= "post">
+    <form action= "form.php" method= "post">
 
     <br><br>
         <button type= »submit »> Plus de voiture</button>
-    
+        <button  type=»button» name="suppression" > suppression voiture </button>
+        <button type= »submit »> modification</button>
     </form>
  
 </body>
